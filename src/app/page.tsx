@@ -1,65 +1,72 @@
-import Image from "next/image";
+"use client"
+import BlogComponent from "@/components/BlogComponent";
+import { blogType } from "./lib/ts/blogType";
+import { useState } from "react";
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+  const blogs: blogType[] = [
+      {
+        profile: "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/0acc/live/fc706510-60ca-11f0-b428-cb3de5783b16.jpg",
+        name: "Ah Boy",
+        position: "Steav Phum",
+        description: "មិត្តភិក្កស្លាប់រស់​"
+      },
+      {
+        profile: "https://images.ctfassets.net/sfnkq8lmu5d7/1NaIFGyBn0qwXYlNaCJSEl/ad59ce5eefa3c2322b696778185cc749/2021_0825_Kitten_Health.jpg",
+        name: "meow meow",
+        position: "princess",
+        description: "Two flully and tiny puppies."
+      },
+      {
+        profile: "https://headsupfortails.com/cdn/shop/articles/Hamster-Breed_f9108f7e-644c-4195-894d-06a0bb48f06b.jpg?v=1754993969",
+        name: "Puppies",
+        position: "Owner of the house",
+        description: "Boss babies"
+      },
+      {
+        profile: "https://i.pinimg.com/736x/4e/1d/70/4e1d70b9108355399cbfb269c3d7742f.jpg",
+        name: "Puppies",
+        position: "Owner of the house",
+        description: "Boss babies"
+      },
+      {
+        profile: "https://i.pinimg.com/736x/2f/3e/d1/2f3ed11527805f5ba9249657edc5c8a6.jpg",
+        name: "Puppies",
+        position: "Owner of the house",
+        description: "Boss babies"
+      },
+      {
+        profile: "https://i1-c.pinimg.com/736x/80/64/90/80649068fb1954798f7043c6505c1d85.jpg",
+        name: "Puppies",
+        position: "Owner of the house",
+        description: "Boss babies"
+      }
+    ];
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+   <div className="p-10 ">
+    <h1 className="w-full h-50 flex justify-center py-20 text-3xl font-serif text-blue-900 text-center bg-purple-300">Hero Section</h1>
+    <h2 className="text-4xl flex justify-center text-center text-pink-800 py-10">Visit our Cafe to meet these babies.</h2>
+
+     <div className="container mx-auto grid grid-cols-3 gap-4">
+        {
+            blogs?.map(({profile, name, position, description},_) => (
+                <BlogComponent
+                key={_}
+                profile={profile}
+                name={name}
+                position={position}
+                description={description}/>
+            ))
+        }
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex justify-center m-10">
+            <h1 className="text-3xl text-purple-950 p-5">Cart: {count}</h1>
+            <button className="border border-purple-900 px-10 rounded-xl"
+            onClick={() => setCount(count+1)}>Add to cart</button>
         </div>
-      </main>
-    </div>
+    
+   </div>
   );
+
 }

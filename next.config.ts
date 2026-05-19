@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "i1-c.pinimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.cats.org.uk"
       }
     ],
   },

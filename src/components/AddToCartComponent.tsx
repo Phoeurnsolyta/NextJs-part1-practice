@@ -5,7 +5,7 @@ export default function AddToCartComponent () {
     // create state
     // state, functionUpdateState initialize value
     const [count, setCount] = useState(0);
-    // update state value
+    // update state valuejj
     // setCount(count+1);
 
     return (
